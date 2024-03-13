@@ -26,6 +26,7 @@ class CartController extends Controller
     public function removeCart()
     {
         \Illuminate\Support\Facades\Session::remove('cart');
+        \Illuminate\Support\Facades\Session::remove('qrCode');
         return Redirect::to('/');
     }
 
@@ -60,6 +61,8 @@ class CartController extends Controller
         \Illuminate\Support\Facades\Session::push('cart', $cart);
     }
     public function finishPay(Request $request){
+        $total=$request->get('total');
+        \Illuminate\Support\Facades\Session::push('total', $total);
         return Redirect::to('/checkout');
     }
 }

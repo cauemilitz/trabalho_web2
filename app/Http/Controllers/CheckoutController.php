@@ -8,11 +8,13 @@ use App\Models\Order;
 use App\Models\Qrcode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class CheckoutController extends Controller
 {
     public function checkout(){
-        return view("checkout");
+        $total = Session::get("total")[0];
+        return view("checkout",compact("total"));
     }
 
     public function store(Request $request){
@@ -50,7 +52,12 @@ class CheckoutController extends Controller
         $qrCode = new QRCODE();
         $qrCode->TEXT("Knowband");
         $qrCode->QRCODE(400,storage_path('app/public') . "/Knowband_text.png");
-        
+
+        $imageQrCode = "Knowband_text.png";
+        \Illuminate\Support\Facades\Session::push('qrCode', $imageQrCode);
+        \Illuminate\Support\Facades\Session::push('orderId', $order->id);
+        return Redirect::to('/pagamento');
         //redirecionar para a tela exibindo o código pix.
+        
    }
 }

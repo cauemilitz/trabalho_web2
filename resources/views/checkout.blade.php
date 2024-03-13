@@ -67,7 +67,8 @@
             </div>
             <div class="col-md-4">
                 <label class="form-label">valor total</label>
-                <input type="text" name="total" class="form-control">
+                <input type="text" class="form-control" value="{{ $total }}" disabled>
+                <input type="hidden" name="total" value="{{ $total }}">
             </div>
             <div class="col-md-4">
                 <label class="form-label">desconto</label>

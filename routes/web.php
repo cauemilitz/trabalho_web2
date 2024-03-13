@@ -18,7 +18,7 @@ use Illuminate\Contracts\Cache\Store;
 |
 */
 
-Route::get('/', [IndexController::class,'index']);
+Route::get('/', [IndexController::class,'index'])->name('home');
 
 Route::post('/search', [IndexController::class,'search'])->name('search');
 
@@ -36,5 +36,6 @@ Route::get('/checkout', [CheckoutController::class,'checkout'])->name('checkout'
 
 Route::post('/store', [CheckoutController::class,'store'])->name('store');
 
-Route::get('/pagamento', PaymentController::class);
+Route::get('/pagamento', [PaymentController::class,'payment'])->name('payment');
 
+Route::post('/simulacso', [PaymentController::class,'simulate'])->name('simulate');

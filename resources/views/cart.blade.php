@@ -57,6 +57,7 @@
   </form>
   <form action="{{ route('finish-pay') }}" method="post">
   <input name="_token" type="hidden" value="{{ csrf_token() }}">
+  <input name="total" type="hidden" value="{{ $total }}">
     <button type="submit" class="btn btn-primary">finalizar compra</button>
   </form>
 @endif
