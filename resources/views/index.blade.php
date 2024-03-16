@@ -2,7 +2,7 @@
 @section('content')
 
 
-        <img src="../../trabalho_web2/public/image/logotipo do site.png" class="logotipo" width="250px" height="250px">
+        <img src="{{asset('image/logotipo do site.png')}}" class="logotipo" width="250px" height="250px">
 
         <h3 class="title">Filtros de pesquisa</h3>
         <div class="row">

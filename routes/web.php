@@ -6,6 +6,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\IndexController;
 use Illuminate\Contracts\Cache\Store;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,13 @@ Route::post('/store', [CheckoutController::class,'store'])->name('store');
 Route::get('/pagamento', [PaymentController::class,'payment'])->name('payment');
 
 Route::post('/simulacso', [PaymentController::class,'simulate'])->name('simulate');
+
+Route::prefix('admin')->group(function () {
+    Route::get('/products', [ProductController::class,'index'])->name('product_list');
+    Route::get('/products/create', [ProductController::class,'create'])->name('product_create');
+    Route::post('/products/store', [ProductController::class,'store'])->name('product_store');
+    Route::get('/products/edit/{id}', [ProductController::class,'edit'])->name('product_edit');
+    //Route::put('{id}',['as'=>'product.update','uses'=>'ProductController@update']);
+    Route::put('/products/edit/{id}', [ProductController::class,'update'])->name('product_update');
+    Route::delete('/products/destroy/{id}', [ProductController::class,'destroy'])->name('product_destroy');
+});
