@@ -8,6 +8,7 @@ use App\Http\Controllers\IndexController;
 use Illuminate\Contracts\Cache\Store;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,10 +51,17 @@ Route::prefix('admin')->group(function () {
     Route::put('/products/edit/{id}', [ProductController::class,'update'])->name('product_update');
     Route::delete('/products/destroy/{id}', [ProductController::class,'destroy'])->name('product_destroy');
 
-    Route::get('/customer', [CustomerController::class,'index'])->name('customer_list');
-    Route::get('/customer/create', [CustomerController::class,'create'])->name('customer_create');
-    Route::post('/customer/store', [CustomerController::class,'store'])->name('customer_store');
-    Route::get('/customer/edit/{id}', [CustomerController::class,'edit'])->name('customer_edit');
-    Route::put('/customer/edit/{id}', [CustomerController::class,'update'])->name('customer_update');
+    Route::get('/customers', [CustomerController::class,'index'])->name('customer_list');
+    Route::get('/customers/create', [CustomerController::class,'create'])->name('customer_create');
+    Route::post('/customers/store', [CustomerController::class,'store'])->name('customer_store');
+    Route::get('/customers/edit/{id}', [CustomerController::class,'edit'])->name('customer_edit');
+    Route::put('/customers/edit/{id}', [CustomerController::class,'update'])->name('customer_update');
+
+    Route::get('/orders', [OrderController::class,'index'])->name('order_list');
+    Route::get('/orders/create', [OrderController::class,'create'])->name('order_create');
+    Route::post('/orders/store', [OrderController::class,'store'])->name('order_store');
+    Route::get('/orders/edit/{id}', [OrderController::class,'edit'])->name('order_edit');
+    Route::put('/orders/edit/{id}', [OrderController::class,'update'])->name('order_update');
+    Route::delete('/orders/destroy/{id}', [OrderController::class,'destroy'])->name('order_destroy');
 });
 

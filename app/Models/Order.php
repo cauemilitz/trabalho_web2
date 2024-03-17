@@ -19,4 +19,8 @@ class Order extends Model
         "customer_id",
         "coupon_id",
     ];
+
+    public function customer(){
+        return $this->belongsTo(Customer::class);
+    }
 }
